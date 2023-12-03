@@ -1,6 +1,6 @@
 
 public class Principal {
-	public static void Main(String[] args3) {
+	public static void Main(String[] args) {
 		
 }
 }
