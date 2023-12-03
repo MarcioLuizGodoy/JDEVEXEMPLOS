@@ -6,4 +6,8 @@ private String nome;
 public Date dataNascimentoFinal;
 
 public String odioNivel;
+
+public CarroTeste () {
+	
+}
 }
