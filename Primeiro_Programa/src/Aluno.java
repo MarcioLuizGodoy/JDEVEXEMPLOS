@@ -20,6 +20,8 @@ private double nota3;
 private double nota4;
 
 
+
+
 			public Aluno() {}
 
 public Aluno (String nomePadrao, int idadePadrao) { 
@@ -155,10 +157,27 @@ public String toString() {
 			+ ", nota3=" + nota3 + ", nota4=" + nota4 + "]";
 }
 
+@Override
+public int hashCode() {
+	return Objects.hash(nome);
+}
 
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Aluno other = (Aluno) obj;
+	return Objects.equals(nome, other.nome);
 }
 
 
+
+
+}
 
 
 
