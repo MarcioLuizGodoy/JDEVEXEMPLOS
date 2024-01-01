@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public  class Aluno {
-		
+	//atributos//
 private String nome;
 private int idade;
 private String cpf;
@@ -14,20 +16,11 @@ private String serieMatriculado;
 
 
 
-private double nota1;
-private double nota2;
-private double nota3;
-private double nota4;
+  	//superconstrutor//
+public Aluno() {}
 
 
-
-
-			public Aluno() {}
-
-public Aluno (String nomePadrao, int idadePadrao) { 
-	nome = nomePadrao;  idade = idadePadrao;
-}
-
+	//Criando os metodos get e set padroes//
 public void setNome(String valor) {
 	nome = valor;
 }
@@ -52,7 +45,6 @@ public String getCpf() {
 public String getDataNascimento() {
 	return dataNascimento;
 }
-
 public void setDataNascimento(String dataNascimento) {
 	this.dataNascimento = dataNascimento;
 }
@@ -60,7 +52,6 @@ public void setDataNascimento(String dataNascimento) {
 public String getNomeMae() {
 	return nomeMae;
 }
-
 public void setNomeMae(String nomeMae) {
 	this.nomeMae = nomeMae;
 }
@@ -68,7 +59,6 @@ public void setNomeMae(String nomeMae) {
 public String getNomePai() {
 	return nomePai;
 }
-
 public void setNomePai(String nomePai) {
 	this.nomePai = nomePai;
 }
@@ -76,7 +66,6 @@ public void setNomePai(String nomePai) {
 public String getDataMatricula() {
 	return dataMatricula;
 }
-
 public void setDataMatricula(String dataMatricula) {
 	this.dataMatricula = dataMatricula;
 }
@@ -84,7 +73,6 @@ public void setDataMatricula(String dataMatricula) {
 public String getNomeEscola() {
 	return nomeEscola;
 }
-
 public void setNomeEscola(String nomeEscola) {
 	this.nomeEscola = nomeEscola;
 }
@@ -92,93 +80,75 @@ public void setNomeEscola(String nomeEscola) {
 public String getSerieMatriculado() {
 	return serieMatriculado;
 }
-
 public void setSerieMatriculado(String serieMatriculado) {
 	this.serieMatriculado = serieMatriculado;
 }
 
 
+	//instanciando lista de objeto da classe disciplina //
+private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+			
+	//metodos get e set padroes.
+	//eles eram necessários??
 
-public double getNota1() {
-	return nota1;
-}
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
 
-public void setNota1(double nota1) {
-	this.nota1 = nota1;
-}
-
-public double getNota2() {
-	return nota2;
-}
-
-public void setNota2(double nota2) {
-	this.nota2 = nota2;
-}
-
-public double getNota3() {
-	return nota3;
-}
-
-public void setNota3(double nota3) {
-	this.nota3 = nota3;
-}
-
-public double getNota4() {
-	return nota4;
-}
-
-public void setNota4(double nota4) {
-	this.nota4 = nota4;
+	public List<Disciplina> getDisciplinas(){
+		return disciplinas;
+	}
+	
+	//metodo de media 
+	
+public  double mediaAnual() {
+	
+	double somaNotas = 0.0;
+	
+	for( Disciplina disciplina : disciplinas) {
+		somaNotas = somaNotas + disciplina.getNota();	
+	}	
+	 return somaNotas/disciplinas.size();
 }
 
 
 
-
-public double MediaNota() {
-	return (nota1 + nota2 + nota3 + nota4)/4;
-}
-
-
-public boolean alunoAprovado() {
-	double media = this.MediaNota();
-	if( media>= 7.0) {
-		return true;
+	//metodo p saber se aluno esta aprovado//
+public String alunoAprovado() {
+	double media = this.mediaAnual();
+	if( media> 50 && media < 70) {
+		if ( media >=70) {
+			return "Aluno esta Aprovado";
+		}
+		return "Aluno em recuperação";
 	}else {
-	return false;
-}
-}
+	return "Aluno reprovado";
+		}
+	}
 
-
-@Override
-public String toString() { 
-	return "Aluno [nome=" + nome + ", idade=" + idade + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
-			+ ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + ", dataMatricula=" + dataMatricula + ", nomeEscola="
-			+ nomeEscola + ", serieMatriculado=" + serieMatriculado + ", nota1=" + nota1 + ", nota2=" + nota2
-			+ ", nota3=" + nota3 + ", nota4=" + nota4 + "]";
-}
+	//metodo para diferenciar objetos por atributos	
 
 @Override
 public int hashCode() {
-	return Objects.hash(nome);
+	return Objects.hash(cpf, dataMatricula, dataNascimento, disciplinas, idade, nome, nomeEscola, nomeMae, nomePai,
+			serieMatriculado);
+
 }
+
 
 @Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Aluno other = (Aluno) obj;
-	return Objects.equals(nome, other.nome);
+public String toString() {
+	return "Aluno [nome=" + nome + ", idade=" + idade + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
+			+ ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + ", dataMatricula=" + dataMatricula + ", nomeEscola="
+			+ nomeEscola + ", serieMatriculado=" + serieMatriculado + ", disciplinas=" + disciplinas + "]";
 }
 
 
 
 
-}
 
+
+}
 
 
  

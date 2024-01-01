@@ -1,70 +1,86 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class PrimeiraclasseJava {
 	
 public static void main(String[]args) {
 	
-/*String nome = JOptionPane.showInputDialog("Qual e o nome do aluno?");
+	//instanciando lista de alunos
+	List<Aluno> alunos = new ArrayList<Aluno>();
+	
+	for(int qtd = 1; qtd<=2; qtd++ ) { //inicio do for gigante
+	
+	//Pedindo para usuario definir os dados dos atributos e guardando em variaveis para depois definitivamente setar
+String nome = JOptionPane.showInputDialog("Qual e o nome do aluno" + qtd +"?");
 String idade = JOptionPane.showInputDialog("Qual ea idade?");
 String dataNascimento = JOptionPane.showInputDialog("Qual e a data de nascimento?");
 String cpf = JOptionPane.showInputDialog("Qual e o cpf?");
 String nomeMae = JOptionPane.showInputDialog("Qual e o nome da mae?");
 String nomePai = JOptionPane.showInputDialog("Qual e o nome do Pai?");
 String dataMatricula = JOptionPane.showInputDialog("Qual e data da matricula?");
-String nomeEscola = JOptionPane.showInputDialog("Qual o nome da escola?");
 String serieMatriculada = JOptionPane.showInputDialog("Qual e a serie matricula?");
+String nomeEscola = JOptionPane.showInputDialog("Qual o nome da escola?");
 
-String nota1 = JOptionPane.showInputDialog("Qual e a nota1? ");
-String nota2 = JOptionPane.showInputDialog("Qual e a nota2?");
-String nota3 = JOptionPane.showInputDialog("Qual e a nota3 ?");
-String nota4 = JOptionPane.showInputDialog("Qual e a nota4 ?");
 
+	//instanciando objeto da classe Aluno
 Aluno Aluno1 = new Aluno();
 
+
+	//setando os dados que estavam salvos nas variaveis preenchidas pelo usuario
 Aluno1.setNome(nome);
 Aluno1.setIdade(Integer.valueOf(idade));
 Aluno1.setDataNascimento("A data de nascimento e:" + dataNascimento);
 Aluno1.setCpf("O cpf e:" + cpf);
 Aluno1.setNomeMae("O nome da mae e: " + nomeMae);
 Aluno1.setNomePai("O nome do pai e: " + nomePai);
-Aluno1.setDataMatricula("O nome do pai e: " + dataMatricula);
+Aluno1.setDataMatricula("A data matricula e: " + dataMatricula);
 Aluno1.setSerieMatriculado("A serie matriculada e: " + serieMatriculada);
 Aluno1.setNomeEscola("O nome da escola e: " + nomeEscola);
 
-Aluno1.setNota1(Double.parseDouble(nota1));
-Aluno1.setNota2(Double.parseDouble(nota2));
-Aluno1.setNota3(Double.parseDouble(nota3));
-Aluno1.setNota4(Double.parseDouble(nota4));
 
-Aluno1.MediaNota();
-Aluno1.alunoAprovado();
+	for (int  posicao = 1; posicao <= 4; posicao ++) {
+		String nomeDisciplina = JOptionPane.showInputDialog
+				("Nome da disciplina"+posicao+"?");
+		String notaDisciplina = JOptionPane.showInputDialog
+				("Nota da disciplina"+posicao+ "?");
 
-	
-	System.out.println(Aluno1);
-	System.out.println("media do aluno: " + Aluno1.MediaNota());
-	System.out.println("Resultado " + Aluno1.alunoAprovado());*/
-	
-	
-	
-	Aluno aluno1 = new Aluno();
-	aluno1.setNome("Alex");
+		Disciplina disciplina = new Disciplina();
+		disciplina.setDisciplina(nomeDisciplina);
+		disciplina.setNota(Double.valueOf(notaDisciplina));
+		Aluno1.getDisciplinas().add(disciplina);		
+	}
 	
 	
-	Aluno aluno2 = new Aluno();
-	aluno2.setNome("Alex");
+	//Perguntando se o usuario quer remover e continuar removendo disciplinas
+		int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplpina?");
+		if (escolha == 0) { // opção sim é 0
+		int continuarRemover = 0;	
+		int posicao =1;
+		while( continuarRemover == 0) { 
+		String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina 1,2,3,4 ?");		 
+		Aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() -posicao);			
+		posicao ++;
+		continuarRemover = JOptionPane.showConfirmDialog(null, "Continuar a remover");
+			 }
+	}
+		//adicionando o aluno a lista de alunos
+		alunos.add(Aluno1); 
+		
+						} // final do for gigante
 	
-	if(aluno1.equals(aluno2)) {
-		System.out.println("Alunos sao iguais");
-	} else {
-		System.out.println("Alunos n sao iguais");
+	//imprimindo cada aluno da lista.
+	for (Aluno alunoDaLista : alunos) {
+		System.out.println(alunoDaLista);
+		System.out.println(alunoDaLista.mediaAnual());
+		System.out.println("Resultado " + alunoDaLista.alunoAprovado());
+		System.out.println("------------------------------------------");
 	}
 	
 	
 	
-	
-	
-	
-	
-}
+	//chaves finais do main
+	}
 }
 
