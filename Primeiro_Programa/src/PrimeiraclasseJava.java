@@ -53,7 +53,7 @@ Aluno1.setNomeEscola("O nome da escola e: " + nomeEscola);
 	}
 	
 	
-	//Perguntando se o usuario quer remover e continuar removendo disciplinas
+			//Perguntando se o usuario quer remover e continuar removendo disciplinas
 		int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplpina?");
 		if (escolha == 0) { // opção sim é 0
 		int continuarRemover = 0;	
@@ -68,15 +68,39 @@ Aluno1.setNomeEscola("O nome da escola e: " + nomeEscola);
 		//adicionando o aluno a lista de alunos
 		alunos.add(Aluno1); 
 		
-						} // final do for gigante
+		} // final do for gigante
 	
-	//imprimindo cada aluno da lista.
-	for (Aluno alunoDaLista : alunos) {
-		System.out.println(alunoDaLista);
-		System.out.println(alunoDaLista.mediaAnual());
-		System.out.println("Resultado " + alunoDaLista.alunoAprovado());
-		System.out.println("------------------------------------------");
+for ( int pos = 0; pos <alunos.size(); pos++) {
+	
+		//Variavel instanciada na classe Aluno
+	Aluno aluno = alunos.get(pos);
+	
+	if ( aluno.getNome().equalsIgnoreCase("Alex")) {
+		Aluno trocar = new Aluno();
+		 trocar.setNome("Aluno foi trocado");
+		 
+		 Disciplina disciplina = new Disciplina();
+		 disciplina.setDisciplina("Matematica");
+		 disciplina.setNota(100);
+		 
+		 trocar.getDisciplinas().add(disciplina);
+		 
+		 alunos.set(pos, trocar);
+		 aluno = alunos.get(pos);
 	}
+	
+	System.out.println("Aluno = " + aluno.getNome());
+	System.out.println("Media = " + aluno.mediaAnual());
+	System.out.println("Situação: " + aluno.alunoAprovado());
+	System.out.println("--------------------------------------");
+	
+	for ( int posd = 0; posd < aluno.getDisciplinas().size(); posd++ ) {
+		Disciplina disc = aluno.getDisciplinas().get(posd);
+		System.out.println("Materia = " + disc.getDisciplina() + 
+				"Nota = " + disc.getNota());
+		
+	}
+}
 	
 	
 	

@@ -118,11 +118,11 @@ public String alunoAprovado() {
 	double media = this.mediaAnual();
 	if( media> 50 && media < 70) {
 		if ( media >=70) {
-			return "Aluno esta Aprovado";
+			return StatusAluno.APROVADO;
 		}
-		return "Aluno em recuperação";
+		return StatusAluno.RECUPERACAO;
 	}else {
-	return "Aluno reprovado";
+	return StatusAluno.REPROVADO;
 		}
 	}
 
