@@ -116,8 +116,8 @@ public  double mediaAnual() {
 	//metodo p saber se aluno esta aprovado//
 public String alunoAprovado() {
 	double media = this.mediaAnual();
-	if( media> 50 && media < 70) {
-		if ( media >=70) {
+	if( media > 5 && media < 7) {
+		if ( media >=7) {
 			return StatusAluno.APROVADO;
 		}
 		return StatusAluno.RECUPERACAO;
