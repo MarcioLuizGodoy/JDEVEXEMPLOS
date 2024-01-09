@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.swing.JOptionPane;
+
 
 public class PrimeiraclasseJava {
 	
@@ -11,7 +11,14 @@ public static void main(String[]args) {
 	String login = JOptionPane.showInputDialog("Informe o login");
 	String senha = JOptionPane.showInputDialog("Informe a senha");
 	
-	if(login.equalsIgnoreCase("Godoy")&&senha.equalsIgnoreCase("Godoy")) {
+	
+Secretario  secretario = new Secretario();
+	
+
+	
+	if( secretario.autenticar(login, senha)) { 
+		// se true acessa, se false não acessa.
+	
 		
 	
 	//instanciando lista de alunos
@@ -129,8 +136,10 @@ Aluno1.setNomeEscola("O nome da escola e: " + nomeEscola);*/
 			System.out.println("Resultado:" + aluno.alunoAprovado()+ "com media de : " 
 					+aluno.mediaAnual());
 		}
-	}
 	
+	} else {
+		JOptionPane.showMessageDialog(null, "Ta errado cuzão <3");
+	}
 	//chaves finais do main
 	}
 }

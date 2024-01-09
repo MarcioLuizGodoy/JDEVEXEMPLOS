@@ -2,94 +2,45 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public  class Aluno {
+public  class Aluno extends Pessoa {
 	//atributos//
-private String nome;
-private int idade;
-private String cpf;
-private String dataNascimento;
-private String nomeMae;
-private String nomePai;
+
 private String dataMatricula;
 private String nomeEscola;
 private String serieMatriculado;
 
-
-
   	//superconstrutor//
 public Aluno() {}
 
-
 	//Criando os metodos get e set padroes//
-public void setNome(String valor) {
-	nome = valor;
-}
-public String getNome() {
-	return nome;
-}
-
-public void setIdade(int valor) {
-	idade = valor;
-}
-public int getIdade() {
-	return idade;
-}
-
-public void setCpf(String valor) {
-	cpf = valor;
-}
-public String getCpf() {
-	return cpf;
-}
-
-public String getDataNascimento() {
-	return dataNascimento;
-}
-public void setDataNascimento(String dataNascimento) {
-	this.dataNascimento = dataNascimento;
-}
-
-public String getNomeMae() {
-	return nomeMae;
-}
-public void setNomeMae(String nomeMae) {
-	this.nomeMae = nomeMae;
-}
-
-public String getNomePai() {
-	return nomePai;
-}
-public void setNomePai(String nomePai) {
-	this.nomePai = nomePai;
-}
-
 public String getDataMatricula() {
-	return dataMatricula;
+return dataMatricula;
 }
+
 public void setDataMatricula(String dataMatricula) {
-	this.dataMatricula = dataMatricula;
+this.dataMatricula = dataMatricula;
 }
 
 public String getNomeEscola() {
-	return nomeEscola;
+return nomeEscola;
 }
+
 public void setNomeEscola(String nomeEscola) {
-	this.nomeEscola = nomeEscola;
+this.nomeEscola = nomeEscola;
 }
 
 public String getSerieMatriculado() {
-	return serieMatriculado;
-}
-public void setSerieMatriculado(String serieMatriculado) {
-	this.serieMatriculado = serieMatriculado;
+return serieMatriculado;
 }
 
+public void setSerieMatriculado(String serieMatriculado) {
+this.serieMatriculado = serieMatriculado;
+}
 
 	//instanciando lista de objeto da classe disciplina //
 private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 			
-	//metodos get e set padroes.
-	//eles eram necessários??
+
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
@@ -99,8 +50,7 @@ private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 		return disciplinas;
 	}
 	
-	//metodo de media 
-	
+	//metodo de media 	
 public  double mediaAnual() {
 	
 	double somaNotas = 0.0;
@@ -110,7 +60,6 @@ public  double mediaAnual() {
 	}	
 	 return somaNotas/disciplinas.size();
 }
-
 
 
 	//metodo p saber se aluno esta aprovado//
@@ -126,29 +75,54 @@ public String alunoAprovado() {
 		}
 	}
 
-	//metodo para diferenciar objetos por atributos	
 
+	//metodo para diferenciar objetos por atributos	
 @Override
 public int hashCode() {
-	return Objects.hash(cpf, dataMatricula, dataNascimento, disciplinas, idade, nome, nomeEscola, nomeMae, nomePai,
-			serieMatriculado);
-
+	return Objects.hash(dataMatricula, disciplinas, nomeEscola, serieMatriculado);
 }
 
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Aluno other = (Aluno) obj;
+	return Objects.equals(dataMatricula, other.dataMatricula) && Objects.equals(disciplinas, other.disciplinas)
+			&& Objects.equals(nomeEscola, other.nomeEscola) && Objects.equals(serieMatriculado, other.serieMatriculado);
+}
 
 @Override
 public String toString() {
-	return "Aluno [nome=" + nome + ", idade=" + idade + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
-			+ ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + ", dataMatricula=" + dataMatricula + ", nomeEscola="
-			+ nomeEscola + ", serieMatriculado=" + serieMatriculado + ", disciplinas=" + disciplinas + "]";
+	return "Aluno [dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+			+ serieMatriculado + ", disciplinas=" + disciplinas + "]";
 }
 
 
+@Override   /*identifica metodo sobreescrito*/
+public boolean pessoaMaiorIdade() {
+	
+	return idade >= 21;
+}
 
+public String msgMaiorIdade() {
+	return this.pessoaMaiorIdade()? 
+			"Oba aluno é maior de idade": "Ixxi vc é menor de idade";
+			
+}
 
-
+@Override
+public double salario() {
+	
+	return 1500.90;
+}
 
 }
+
 
 
  
